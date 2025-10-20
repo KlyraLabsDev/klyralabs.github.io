@@ -6,7 +6,6 @@
 <title>Klyra Labs</title>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  /* Base styling */
   body {
     margin: 0;
     background: #0d0d0f;
@@ -17,7 +16,6 @@
     padding: 2rem;
   }
 
-  /* Accent colors */
   .accent {
     background: linear-gradient(90deg, #b491f9, #662c5e);
     -webkit-background-clip: text;
@@ -25,7 +23,6 @@
     font-weight: bold;
   }
 
-  /* Blinking cursor */
   .cursor {
     display: inline-block;
     width: 0.7ch;
@@ -38,19 +35,62 @@
     50.01%, 100% { opacity: 0; }
   }
 
-  /* Typing animation */
-  .typewriter {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 0.15em solid #b491f9;
-    animation: typing 2s steps(60, end) 1, blink 1s infinite;
-  }
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
+  .section {
+    margin-bottom: 1.5rem;
   }
 
-  /* Sections */
-  .section {
-    margin-bottom
+  a {
+    color: #b491f9;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .prompt {
+    color: #b491f9;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="section">
+  <span class="prompt">> whoami</span>
+  <div>Lucía Gil <span class="accent">(aka Klyra)</span><br>
+  Pharmacy Assistant | SEO & eCommerce | Aspiring Cybersecurity Professional</div>
+</div>
+
+<div class="section">
+  <span class="prompt">> cat about.txt</span>
+  <div>
+    I’m Lucía, a pharmacy assistant from Spain with a CFGM in Farmàcia i Parafarmàcia.<br>
+    After several years improving SEO and eCommerce workflows in the pharmacy field,<br>
+    I discovered a deep passion for technology and cybersecurity.<br>
+    I’m currently self-studying networking, systems, and security fundamentals<br>
+    while planning to begin a CFGS in ASIR in 2026.<br>
+    Native Spanish & Catalan speaker, with EF SET C2 English certification.
+  </div>
+</div>
+
+<div class="section">
+  <span class="prompt">> ls socials/</span>
+  <div>
+    github → <a href="https://github.com/KlyraLabsDev" target="_blank">@KlyraLabsDev</a><br>
+    linkedin → <a href="#" target="_blank">@KlyraVibes</a><br>
+    youtube → <a href="#" target="_blank">@KlyraVibes</a>
+  </div>
+</div>
+
+<div class="section">
+  <span class="prompt">> mail</span>
+  <div><a href="mailto:contact@klyralabs.dev">contact@klyralabs.dev</a></div>
+</div>
+
+<div class="section">
+  <span class="prompt">> ls portfolio/</span>
+  <div>[WIP] Projects coming soon...</div>
+</div>
+
+</body>
+</html>
