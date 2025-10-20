@@ -3,17 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Klyra Labs</title>
+<title>KlyraLabs</title>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
 <style>
   body {
     margin: 0;
-    background: #0d0d0f;
+    background: linear-gradient(135deg, #0d0d0f, #1a1a1d);
     color: #e0e0e0;
     font-family: 'Fira Code', monospace;
-    font-size: 1rem;
-    line-height: 1.5;
     padding: 2rem;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  header h1 {
+    font-size: 2.2rem;
+    margin: 0;
+    background: linear-gradient(90deg, #b491f9, #662c5e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    text-shadow: 0 0 4px #b491f9, 0 0 8px #662c5e;
+  }
+
+  header p {
+    color: #b491f9;
+    font-style: italic;
+  }
+
+  .prompt {
+    color: #b491f9;
+    font-weight: bold;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: slideFade 0.7s forwards;
+  }
+
+  .section:nth-child(2) { animation-delay: 0.5s; }
+  .section:nth-child(3) { animation-delay: 1s; }
+  .section:nth-child(4) { animation-delay: 1.5s; }
+  .section:nth-child(5) { animation-delay: 2s; }
+  .section:nth-child(6) { animation-delay: 2.5s; }
+
+  @keyframes slideFade {
+    0% { opacity: 0; transform: translateX(-20px); }
+    100% { opacity: 1; transform: translateX(0); }
   }
 
   .accent {
@@ -21,6 +61,16 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
+    text-shadow: 0 0 4px #b491f9, 0 0 8px #662c5e;
+  }
+
+  a {
+    color: #b491f9;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  a:hover {
+    text-shadow: 0 0 5px #b491f9, 0 0 10px #662c5e;
   }
 
   .cursor {
@@ -31,66 +81,72 @@
     margin-left: 2px;
   }
   @keyframes blink {
-    0%, 50% { opacity: 1; }
-    50.01%, 100% { opacity: 0; }
+    0%,50%{opacity:1;}
+    50.01%,100%{opacity:0;}
   }
 
-  .section {
-    margin-bottom: 1.5rem;
-  }
-
-  a {
-    color: #b491f9;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .prompt {
-    color: #b491f9;
-    font-weight: bold;
+  hr {
+    border: 1px solid #662c5e;
+    margin: 1rem 0;
   }
 </style>
 </head>
 <body>
 
+<header>
+  <h1>KlyraLabs</h1>
+  <p>Tech Enthusiast & Aspiring Cybersecurity Professional</p>
+</header>
+
 <div class="section">
   <span class="prompt">> whoami</span>
-  <div>Lucía Gil <span class="accent">(aka Klyra)</span><br>
-  Pharmacy Assistant | SEO & eCommerce | Aspiring Cybersecurity Professional</div>
+  <div class="line">Lucía Gil <span class="accent">(aka Klyra)</span><br>
+  Pharmacy Assistant | SEO & eCommerce | Cybersecurity Explorer<span class="cursor"></span></div>
+  <hr>
 </div>
 
 <div class="section">
   <span class="prompt">> cat about.txt</span>
-  <div>
-    I’m Lucía, a pharmacy assistant from Spain with a CFGM in Farmàcia i Parafarmàcia.<br>
-    After several years improving SEO and eCommerce workflows in the pharmacy field,<br>
-    I discovered a deep passion for technology and cybersecurity.<br>
-    I’m currently self-studying networking, systems, and security fundamentals<br>
-    while planning to begin a CFGS in ASIR in 2026.<br>
-    Native Spanish & Catalan speaker, with EF SET C2 English certification.
+  <div class="line">
+    I’ve been working in a pharmacy for 1 year, gaining hands-on experience in eCommerce, SEO, and customer service.<br>
+    My passion for technology and cybersecurity goes back much further — it’s been my hobby and interest for years.<br>
+    I studied pharmacy when I was young to be safe, but now I focus on IT and cybersecurity.<br>
+    I’m self-studying networking and security while planning to begin a CFGS in ASIR in 2026.<br>
+    Native Spanish & Catalan, EF SET C2 English.<span class="cursor"></span>
   </div>
+  <hr>
 </div>
 
 <div class="section">
   <span class="prompt">> ls socials/</span>
-  <div>
+  <div class="line">
     github → <a href="https://github.com/KlyraLabsDev" target="_blank">@KlyraLabsDev</a><br>
     linkedin → <a href="#" target="_blank">@KlyraVibes</a><br>
-    youtube → <a href="#" target="_blank">@KlyraVibes</a>
+    youtube → <a href="#" target="_blank">@KlyraVibes</a><span class="cursor"></span>
   </div>
+  <hr>
 </div>
 
 <div class="section">
   <span class="prompt">> mail</span>
-  <div><a href="mailto:contact@klyralabs.dev">contact@klyralabs.dev</a></div>
+  <div class="line"><a href="mailto:contact@klyralabs.dev">contact@klyralabs.dev</a><span class="cursor"></span></div>
+  <hr>
 </div>
 
 <div class="section">
   <span class="prompt">> ls portfolio/</span>
-  <div>[WIP] Projects coming soon...</div>
+  <div class="line">[WIP] Projects coming soon...<span class="cursor"></span></div>
+  <hr>
 </div>
 
-</body>
-</html>
+<script>
+  // Animación de tipeo línea por línea, respetando HTML
+  document.querySelectorAll('.line').forEach(line => {
+    const fullText = line.innerHTML;
+    line.innerHTML = '';
+    let i = 0;
+    function type() {
+      if(i < fullText.length) {
+        line.innerHTML += fullText.charAt(i);
+        i++;
+        setTimeout(type,
