@@ -1,152 +1,413 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KlyraLabs</title>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, #0d0d0f, #1a1a1d);
-    color: #e0e0e0;
-    font-family: 'Fira Code', monospace;
-    padding: 2rem;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>KlyraLabs — Klyra (Lucía Gil Gracia)</title>
+  <meta name="description" content="KlyraLabs — Klyra. Dev & IT enthusiast exploring cybersecurity. Portfolio of Lucía Gil Gracia." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-0: #06010a;
+      --bg-1: #14031a;
+      --panel: rgba(255,255,255,0.03);
+      --muted: rgba(255,255,255,0.68);
+      --neon-mag: #d16cff;      /* magenta */
+      --neon-lav: #b892ff;      /* lavender */
+      --neon-cyan: #7ee7ff;
+      --accent-glow: 0 8px 34px rgba(209,108,255,0.15), 0 2px 8px rgba(124,58,237,0.08);
+      --radius: 14px;
+      --max-width: 1100px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(209,108,255,0.06), transparent),
+        radial-gradient(700px 350px at 90% 80%, rgba(124,146,255,0.04), transparent),
+        linear-gradient(180deg,var(--bg-0),var(--bg-1));
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      font-size:16px;
+      line-height:1.45;
+    }
 
-  header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
+    .wrap{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:28px;
+    }
 
-  header h1 {
-    font-size: 2.2rem;
-    margin: 0;
-    background: linear-gradient(90deg, #b491f9, #662c5e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    text-shadow: 0 0 4px #b491f9, 0 0 8px #662c5e;
-  }
+    /* Header */
+    header{ display:flex; gap:16px; align-items:center; justify-content:space-between; margin-bottom:28px; }
+    .brand{ display:flex; gap:12px; align-items:center; text-decoration:none; color:inherit; }
+    .logo {
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--neon-mag),var(--neon-lav));
+      display:grid;
+      place-items:center;
+      box-shadow: 0 8px 30px rgba(98,33,161,0.25), 0 2px 6px rgba(0,0,0,0.6);
+      position:relative;
+      overflow:visible;
+    }
+    /* crescent moon motif */
+    .logo::after{
+      content:"";
+      position:absolute;
+      width:26px; height:26px;
+      border-radius:50%;
+      background: rgba(255,255,255,0.95);
+      right:10px; top:10px;
+      transform: translate(4px,-6px);
+      mix-blend-mode:screen;
+      filter: blur(1px);
+      opacity:0.95;
+      box-shadow: 0 6px 18px rgba(177,98,255,0.16);
+      clip-path: circle(50% at 35% 35%);
+    }
+    .logo span{ font-weight:800; font-family: "JetBrains Mono", monospace; color:#0a0014; }
 
-  header p {
-    color: #b491f9;
-    font-style: italic;
-  }
+    .brand .title{ line-height:1; }
+    .brand .title .main{ font-weight:800; font-size:18px; letter-spacing:-0.4px; }
+    .brand .title .sub{ font-size:12px; color:var(--muted); margin-top:2px; }
 
-  .prompt {
-    color: #b491f9;
-    font-weight: bold;
-  }
+    nav{ display:flex; gap:12px; align-items:center; }
+    .nav-link{ color:var(--muted); text-decoration:none; font-weight:600; padding:8px 10px; border-radius:10px; }
+    .nav-link:hover{ color:#fff; transform:translateY(-2px); }
 
-  .section {
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: slideFade 0.7s forwards;
-  }
+    .controls{ display:flex; gap:10px; align-items:center; }
 
-  .section:nth-child(2) { animation-delay: 0.5s; }
-  .section:nth-child(3) { animation-delay: 1s; }
-  .section:nth-child(4) { animation-delay: 1.5s; }
-  .section:nth-child(5) { animation-delay: 2s; }
-  .section:nth-child(6) { animation-delay: 2.5s; }
+    .btn{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:10px 14px; border-radius:12px; text-decoration:none; color:inherit;
+      background: rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.04);
+      font-weight:700; cursor:pointer;
+    }
+    .btn.neon{
+      background: linear-gradient(90deg,var(--neon-mag),var(--neon-lav));
+      color:#0b0710; box-shadow: var(--accent-glow);
+    }
 
-  @keyframes slideFade {
-    0% { opacity: 0; transform: translateX(-20px); }
-    100% { opacity: 1; transform: translateX(0); }
-  }
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:32px;
+    }
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:28px;
+      border-radius:var(--radius);
+      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      position:relative;
+      overflow:hidden;
+      min-height:230px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .moon-deco{
+      position:absolute; right:-120px; top:-40px; width:360px; height:360px; border-radius:50%;
+      background: radial-gradient(circle at 30% 35%, rgba(255,255,255,0.06), rgba(209,108,255,0.02) 30%, transparent 40%);
+      filter: blur(36px); transform:rotate(8deg);
+      opacity:0.6; pointer-events:none;
+    }
 
-  .accent {
-    background: linear-gradient(90deg, #b491f9, #662c5e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    text-shadow: 0 0 4px #b491f9, 0 0 8px #662c5e;
-  }
+    .eyebrow{ color:var(--neon-lav); font-weight:700; letter-spacing:0.6px; }
+    h1{ margin:6px 0 6px 0; font-size:34px; line-height:1; letter-spacing:-0.6px; }
+    .hero-sub{ color:var(--muted); max-width:70%; margin-top:10px; }
 
-  a {
-    color: #b491f9;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  a:hover {
-    text-shadow: 0 0 5px #b491f9, 0 0 10px #662c5e;
-  }
+    .role{
+      margin-top:10px; display:flex; gap:10px; align-items:center; color:var(--neon-cyan);
+      font-weight:700; font-family:"JetBrains Mono", monospace;
+    }
+    .cursor{ width:2px; height:20px; background:currentColor; animation:blink 1s infinite; }
+    @keyframes blink{ 50% { opacity:0 } }
 
-  .cursor {
-    display: inline-block;
-    width: 0.7ch;
-    background-color: #b491f9;
-    animation: blink 1s infinite;
-    margin-left: 2px;
-  }
-  @keyframes blink {
-    0%,50%{opacity:1;}
-    50.01%,100%{opacity:0;}
-  }
+    /* right column */
+    .side-card{ display:flex; flex-direction:column; gap:12px; }
+    .mini{ background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); padding:14px; border-radius:12px; border: 1px solid rgba(255,255,255,0.03); }
 
-  hr {
-    border: 1px solid #662c5e;
-    margin: 1rem 0;
-  }
-</style>
+    .pill{ display:inline-block; padding:6px 10px; margin:6px 6px 0 0; border-radius:999px; background: rgba(255,255,255,0.03); font-weight:700; font-size:13px; }
+
+    /* sections */
+    section{ margin-top:22px; }
+    .section-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:12px; }
+    .card{ padding:18px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border:1px solid rgba(255,255,255,0.03); }
+
+    .project{ transition: transform .22s, box-shadow .22s; }
+    .project:hover{ transform: translateY(-10px); box-shadow: 0 24px 60px rgba(5,6,10,0.7); }
+
+    .timeline{ display:flex; flex-direction:column; gap:12px; margin-top:12px; }
+    .timeline-item{ display:grid; grid-template-columns:110px 1fr; gap:12px; align-items:center; padding:12px; border-radius:10px; background: rgba(255,255,255,0.015); border:1px solid rgba(255,255,255,0.02); }
+    .date{ font-family:"JetBrains Mono", monospace; color:var(--muted); font-size:13px; }
+
+    .muted{ color:var(--muted) }
+
+    footer{ margin-top:30px; text-align:center; color:var(--muted); font-size:13px; }
+
+    /* reveal */
+    .reveal{ opacity:0; transform:translateY(10px); transition: all .7s cubic-bezier(.2,.9,.2,1); }
+    .reveal.visible{ opacity:1; transform:none; }
+
+    /* responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns:1fr; }
+      .section-grid{ grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width:640px){
+      .section-grid{ grid-template-columns:1fr; }
+      header{ flex-direction:column; align-items:flex-start; gap:12px; }
+      .logo{ width:48px; height:48px; }
+      h1{ font-size:26px; }
+      .hero-sub{ max-width:100%; }
+    }
+
+    /* small utilities */
+    a:focus, button:focus, input:focus, textarea:focus { outline:none; box-shadow: 0 0 0 4px rgba(177,98,255,0.10); border-radius:10px; }
+    .underline{ height:6px; width:72px; border-radius:8px; background: linear-gradient(90deg,var(--neon-mag),var(--neon-lav)); display:inline-block; margin-top:8px; }
+  </style>
 </head>
 <body>
+  <div class="wrap" id="top" data-theme="dark">
+    <header>
+      <a class="brand" href="#top" aria-label="KlyraLabs home">
+        <div class="logo" aria-hidden="true"><span>K</span></div>
+        <div class="title">
+          <div class="main">KlyraLabs</div>
+          <div class="sub">Klyra — creative tech & IT</div>
+        </div>
+      </a>
 
-<header>
-  <h1>KlyraLabs</h1>
-  <p>Tech Enthusiast & Aspiring Cybersecurity Professional</p>
-</header>
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
 
-<div class="section">
-  <span class="prompt">> whoami</span>
-  <div class="line">Lucía Gil <span class="accent">(aka Klyra)</span><br>
-  Pharmacy Assistant | SEO & eCommerce | Cybersecurity Explorer<span class="cursor"></span></div>
-  <hr>
-</div>
+      <div class="controls">
+        <!-- Language toggle placeholder -->
+        <button id="langToggle" class="btn" aria-pressed="false" title="Language toggle">EN ▾</button>
 
-<div class="section">
-  <span class="prompt">> cat about.txt</span>
-  <div class="line">
-    I’ve been working in a pharmacy for 1 year, gaining hands-on experience in eCommerce, SEO, and customer service.<br>
-    My passion for technology and cybersecurity goes back much further — it’s been my hobby and interest for years.<br>
-    I studied pharmacy when I was young to be safe, but now I focus on IT and cybersecurity.<br>
-    I’m self-studying networking and security while planning to begin a CFGS in ASIR in 2026.<br>
-    Native Spanish & Catalan, EF SET C2 English.<span class="cursor"></span>
-  </div>
-  <hr>
-</div>
+        <button id="themeToggle" class="btn" title="Toggle theme">🌙</button>
 
-<div class="section">
-  <span class="prompt">> ls socials/</span>
-  <div class="line">
-    github → <a href="https://github.com/KlyraLabsDev" target="_blank">@KlyraLabsDev</a><br>
-    linkedin → <a href="#" target="_blank">@KlyraVibes</a><br>
-    youtube → <a href="#" target="_blank">@KlyraVibes</a><span class="cursor"></span>
-  </div>
-  <hr>
-</div>
+        <a id="resumeBtn" class="btn neon" href="#" download="Klyra_Resume.txt" title="Download résumé (placeholder)">Download Résumé</a>
+      </div>
+    </header>
 
-<div class="section">
-  <span class="prompt">> mail</span>
-  <div class="line"><a href="mailto:contact@klyralabs.dev">contact@klyralabs.dev</a><span class="cursor"></span></div>
-  <hr>
-</div>
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div class="hero-card reveal">
+          <div class="moon-deco" aria-hidden="true"></div>
 
-<div class="section">
-  <span class="prompt">> ls portfolio/</span>
-  <div class="line">[WIP] Projects coming soon...<span class="cursor"></span></div>
-  <hr>
-</div>
+          <div class="eyebrow">Klyra — KlyraLabs.dev</div>
+          <h1>Hi, I’m <span style="background:linear-gradient(90deg,var(--neon-mag),var(--neon-lav)); -webkit-background-clip:text; color:transparent; font-weight:800;">Klyra</span></h1>
 
-<script>
-  // Animación de tipeo línea por línea, respetando HTML
-  document.querySelectorAll('.line').forEach(line => {
-    const fullText = line.innerHTML;
-    line.innerHTML = '';
-    let i = 0;
-    function type() {
-      if(i < fullText.length) {
-        line.innerHTML += fullText.charAt(i);
-        i++;
-        setTimeout(type,
+          <div class="role">
+            <div id="typeText">Dev & IT enthusiast</div>
+            <div class="cursor" aria-hidden="true"></div>
+          </div>
+
+          <p class="hero-sub" style="margin-top:14px;">
+            I’m <strong>Lucía Gil Gracia</strong> (legal name). I love everything IT — learning cybersecurity, managing web systems, and solving technical issues for real customers. Based in Sitges, Spain. Born 19 April 2003 — 22 years old.
+          </p>
+
+          <div style="margin-top:18px; display:flex; gap:10px; align-items:center;">
+            <a class="btn neon" href="#contact">Work with me</a>
+            <a class="btn" href="#projects">See my work</a>
+          </div>
+
+          <div style="margin-top:16px; color:var(--muted); font-size:13px;">
+            Languages: Spanish (native) · Catalan (native) · English (EF SET C2). · Email: <a href="mailto:contact@klyralabs.dev" style="color:inherit; text-decoration:underline;">contact@klyralabs.dev</a>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="mini reveal">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div style="font-weight:800">Current</div>
+              <div style="font-size:12px; color:var(--muted)">Since Jul 2025</div>
+            </div>
+            <div style="margin-top:8px; font-weight:700">Pharmacy Technician — Sitges (concurrent pharmacy)</div>
+            <div class="muted" style="margin-top:8px; font-size:14px;">
+              Hired after apprenticeship. I manage technical operations: the official website & back office, online orders & issues, SEO, stock reposition, and all technical problems. I also provide customer support in English and Spanish.
+            </div>
+          </div>
+
+          <div class="mini reveal">
+            <div style="font-weight:800">Skills</div>
+            <div style="margin-top:10px">
+              <span class="pill">Customer Service</span>
+              <span class="pill">IT Support</span>
+              <span class="pill">Web Management</span>
+              <span class="pill">SEO</span>
+              <span class="pill">Cybersecurity (learning)</span>
+              <span class="pill">Technical Troubleshooting</span>
+            </div>
+          </div>
+
+          <div class="mini reveal" aria-hidden="true">
+            <div style="font-weight:800">Brand</div>
+            <div class="muted" style="margin-top:8px">KlyraLabs.dev — elegant dev + IT support</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="aboutTitle">
+        <h3 id="aboutTitle">About</h3>
+        <span class="underline" aria-hidden="true"></span>
+        <div class="muted" style="margin-top:10px; max-width:70%; line-height:1.6;">
+          I’m <strong>Lucía (Klyra)</strong>, a passionate IT explorer and budding cybersecurity enthusiast. I combine hands-on customer-facing experience with technical responsibilities: maintaining the pharmacy's website and back office, handling orders and SEO, troubleshooting systems, and supporting customers in English, Spanish and Catalan. I enjoy building reliable systems and learning the defensive side of technology.
+        </div>
+      </section>
+
+      <!-- Projects (example placeholders you can replace) -->
+      <section id="projects">
+        <div style="display:flex; justify-content:space-between; align-items:end;">
+          <div>
+            <h3 style="margin:0">Projects & Highlights</h3>
+            <div class="muted" style="margin-top:8px">Small selection — replace these placeholders with your live demos or repos.</div>
+          </div>
+          <div class="muted">Portfolio • KlyraLabs</div>
+        </div>
+
+        <div class="section-grid">
+          <article class="card project reveal" tabindex="0">
+            <h4 style="margin:0">Pharmacy Site Admin</h4>
+            <div class="muted" style="font-size:13px; margin-top:8px;">Managed the pharmacy's site, order flow, and back-office integrations. Troubleshot payment & stock issues and improved the order process.</div>
+            <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+              <div style="margin-top:12px" class="muted">Tech: CMS, basic JS, SEO</div>
+              <div style="display:flex; gap:8px;">
+                <a class="btn" href="#" aria-label="View demo">Demo</a>
+                <a class="btn" href="#" aria-label="View code">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal" tabindex="0">
+            <h4 style="margin:0">IT Support & Troubleshooting</h4>
+            <div class="muted" style="font-size:13px; margin-top:8px;">Resolved POS, network and device issues at work; documented steps and improved first response times for common faults.</div>
+            <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+              <div class="muted">Tech: Windows, POS, Networking</div>
+              <div style="display:flex; gap:8px;">
+                <a class="btn" href="#" aria-label="More info">More</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal" tabindex="0">
+            <h4 style="margin:0">Cybersecurity Learning Lab</h4>
+            <div class="muted" style="font-size:13px; margin-top:8px;">Personal learning projects focusing on defensive basics and secure configuration. (Ongoing)</div>
+            <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center;">
+              <div class="muted">Tech: Linux, networking, security fundamentals</div>
+              <div style="display:flex; gap:8px;">
+                <a class="btn" href="#" aria-label="See notes">Notes</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div style="margin-top:14px; display:flex; justify-content:center;">
+          <a class="btn" href="#" aria-label="See all projects">See all projects</a>
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" aria-labelledby="expTitle">
+        <h3 id="expTitle" style="margin-top:22px">Experience</h3>
+        <div class="muted" style="margin-top:8px">Real-world roles where I learned customer service, operations, and technical responsibilities.</div>
+
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="date">Jul 2025 — Present</div>
+            <div>
+              <h4 style="margin:0">Pharmacy Technician — Sitges (concurrent pharmacy)</h4>
+              <div class="muted" style="margin-top:6px;">Hired after apprenticeship. I currently manage the website/back-office, orders, SEO, stock handling, and technical issues while supporting customers in English and Spanish.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="date">Mar 2023 — Jul 2024</div>
+            <div>
+              <h4 style="margin:0">LA CANTERA BILER BAR — Dishwasher • Kitchen assistant • Waiter</h4>
+              <div class="muted" style="margin-top:6px;">Handled kitchen operations, service, and customer-facing tasks — learned persistence, teamwork, and fast-paced operational problem solving.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="date">Feb 2023 — Mar 2023</div>
+            <div>
+              <h4 style="margin:0">CAPRABO — General worker</h4>
+              <div class="muted" style="margin-top:6px;">Repositioning, checkout duties, and general store tasks — an early experience in customer service and retail operations.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education">
+        <h3 style="margin-top:22px">Education</h3>
+        <div class="muted" style="margin-top:8px">Formal training and certifications.</div>
+
+        <div class="timeline reveal" style="margin-top:12px;">
+          <div class="timeline-item">
+            <div class="date">2023 — 2025</div>
+            <div>
+              <h4 style="margin:0">CFGM Pharmacy Technician</h4>
+              <div class="muted" style="margin-top:6px;">Two-year vocational training (apprenticeship included). Completed in 2025.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="date">EF SET</div>
+            <div>
+              <h4 style="margin:0">English Certificate — EF SET C2</h4>
+              <div class="muted" style="margin-top:6px;">Proficient English (C2) — strong customer service & written communication in English.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" style="margin-top:22px;">
+        <h3>Contact</h3>
+        <div class="muted" style="margin-top:8px">Available for freelance and part-time technical support, web management, and internships in IT & cybersecurity learning roles.</div>
+
+        <div style="display:grid; grid-template-columns: 1fr 320px; gap:16px; margin-top:12px;">
+          <form class="card reveal" id="contactForm" onsubmit="event.preventDefault(); sendMail();" aria-label="Contact form">
+            <div style="display:flex; gap:12px;">
+              <div style="flex:1">
+                <label for="name">Your name</label>
+                <input id="name" name="name" placeholder="Jane Doe" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit;">
+              </div>
+              <div style="width:220px">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" placeholder="you@example.com" required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit;">
+              </div>
+            </div>
+
+            <div style="margin-top:12px;">
+              <label for="message">Message</label>
+              <textarea id="message" rows="6" placeholder="Tell me about the project..." required style="width:100%; padding:10px; border-radius:8px; border:1px solid rgba(255,255,255,0.04); background:transparent; color:inherit;"></textarea>
+            </div>
+
+            <div style="margin-top:12px; display:flex; gap:10px; align-items:center;">
+              <button class="btn neon" type="submit">Send message</button>
+              <div class="muted" style="font-size:13px">Or email me at <a href="mailto:contact@klyralabs.dev" style="color:inherit; text-decoration:underline;">contact@klyralabs.dev</a></div>
+            </div>
+          </form>
+
+          <aside class="mini reveal" aria-hidden="true">
+            <div style="font-weight:800">Quick contact</div>
+            <div class="muted" style="margin-top:8px">Email: <a href="mailto:contact@klyralabs.dev" style="color:inherit; text-decoration:underline;">contact@klyralabs.dev</a></div>
+            <div style="margin-top:10px; font-weight:800">Availability</div>
+            <div class="muted" style="margin-to
