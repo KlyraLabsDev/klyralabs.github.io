@@ -4,79 +4,165 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>KlyraLabs — Klyra (Lucía Gil Gracia)</title>
-
-  <!-- Base for GitHub Pages + custom domain -->
-  <base href="https://klyralabs.dev/">
-
   <meta name="description" content="KlyraLabs — Klyra. Dev & IT enthusiast exploring cybersecurity. Portfolio of Lucía Gil Gracia." />
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg-0: #06010a; --bg-1:#14031a; --panel:rgba(255,255,255,0.03); --muted:rgba(255,255,255,0.68);
-      --neon-mag:#d16cff; --neon-lav:#b892ff; --neon-cyan:#7ee7ff; --accent-glow:0 8px 34px rgba(209,108,255,0.15),0 2px 8px rgba(124,58,237,0.08);
-      --radius:14px; --max-width:1100px; font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial; color-scheme:dark;
-    }
-    *{box-sizing:border-box;}
-    html,body{height:100%;margin:0;color:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;line-height:1.45;background:radial-gradient(800px 400px at 10% 10%, rgba(209,108,255,0.06), transparent),radial-gradient(700px 350px at 90% 80%, rgba(124,146,255,0.04), transparent),linear-gradient(180deg,var(--bg-0),var(--bg-1));}
-
-    .wrap{max-width:var(--max-width);margin:40px auto;padding:28px;}
-    header{display:flex;gap:16px;align-items:center;justify-content:space-between;margin-bottom:28px;}
-    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;}
-    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--neon-mag),var(--neon-lav));display:grid;place-items:center;position:relative;overflow:visible;}
-    .logo::after{content:"";position:absolute;width:26px;height:26px;border-radius:50%;background: rgba(255,255,255,0.95);right:10px;top:10px;transform: translate(4px,-6px);mix-blend-mode:screen;filter: blur(1px);opacity:0.95;box-shadow:0 6px 18px rgba(177,98,255,0.16);clip-path:circle(50% at 35% 35%);}
-    .logo span{font-weight:800;font-family:"JetBrains Mono",monospace;color:#0a0014;}
-    .brand .title{line-height:1;}
-    .brand .title .main{font-weight:800;font-size:18px;letter-spacing:-0.4px;}
-    .brand .title .sub{font-size:12px;color:var(--muted);margin-top:2px;}
-    nav{display:flex;gap:12px;align-items:center;}
-    .nav-link{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:10px;}
-    .nav-link:hover{color:#fff;transform:translateY(-2px);}
-    .btn{display:inline-flex;gap:10px;align-items:center;padding:10px 14px;border-radius:12px;background: rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);font-weight:700;color:inherit;text-decoration:none;cursor:pointer;}
-    .btn.neon{background:linear-gradient(90deg,var(--neon-mag),var(--neon-lav));color:#0b0710;box-shadow: var(--accent-glow);}
-    .hero{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;margin-bottom:32px;}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:28px;border-radius:var(--radius);box-shadow:0 10px 40px rgba(2,6,23,0.6);position:relative;overflow:hidden;min-height:230px;border:1px solid rgba(255,255,255,0.03);}
-    .moon-deco{position:absolute;right:-120px;top:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle at 30% 35%, rgba(255,255,255,0.06), rgba(209,108,255,0.02) 30%, transparent 40%);filter:blur(36px);transform:rotate(8deg);opacity:0.6;pointer-events:none;}
-    h1{margin:6px 0 6px 0;font-size:34px;line-height:1;letter-spacing:-0.6px;}
-    .hero-sub{color:var(--muted);max-width:70%;margin-top:10px;}
-    .role{margin-top:10px;display:flex;gap:10px;align-items:center;color:var(--neon-cyan);font-weight:700;font-family:"JetBrains Mono",monospace;}
-    .cursor{width:2px;height:20px;background:currentColor;animation:blink 1s infinite;}
-    @keyframes blink{50%{opacity:0}}
-    .side-card{display:flex;flex-direction:column;gap:12px;}
-    .mini{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);}
-    .pill{display:inline-block;padding:6px 10px;margin:6px 6px 0 0;border-radius:999px;background: rgba(255,255,255,0.03);font-weight:700;font-size:13px;}
-    section{margin-top:22px;}
-    .section-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px;}
-    .card{padding:18px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border:1px solid rgba(255,255,255,0.03);}
-    .timeline{display:flex;flex-direction:column;gap:12px;margin-top:12px;}
-    .timeline-item{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;padding:12px;border-radius:10px;background: rgba(255,255,255,0.015);border:1px solid rgba(255,255,255,0.02);}
-    .date{font-family:"JetBrains Mono",monospace;color:var(--muted);font-size:13px;}
-    .muted{color:var(--muted);}
-    footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px;}
-    .reveal{opacity:0;transform:translateY(10px);transition:all .7s cubic-bezier(.2,.9,.2,1);}
-    .reveal.visible{opacity:1;transform:none;}
-    @media(max-width:980px){.hero{grid-template-columns:1fr}.section-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:640px){.section-grid{grid-template-columns:1fr}header{flex-direction:column;align-items:flex-start;gap:12px}.logo{width:48px;height:48px}h1{font-size:26px}.hero-sub{max-width:100%;}}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="wrap" id="top">
-  <header>
-    <a class="brand" href="#top" aria-label="KlyraLabs home">
-      <div class="logo" aria-hidden="true"><span>K</span></div>
-      <div class="title">
-        <div class="main">KlyraLabs</div>
-        <div class="sub">Klyra — creative tech & IT</div>
+  <div class="wrap" id="top" data-theme="dark">
+    <header>
+      <a class="brand" href="#top" aria-label="KlyraLabs home">
+        <div class="logo" aria-hidden="true"><span>K</span></div>
+        <div class="title">
+          <div class="main">KlyraLabs</div>
+          <div class="sub">Klyra — creative tech & IT</div>
+        </div>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#experience">Experience</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="controls">
+        <button id="langToggle" class="btn" aria-pressed="false" title="Language toggle">EN ▾</button>
+        <button id="themeToggle" class="btn" title="Toggle theme">🌙</button>
+        <a id="resumeBtn" class="btn neon" href="#" download="Klyra_Resume.txt" title="Download résumé (placeholder)">Download Résumé</a>
       </div>
-    </a>
-    <nav>
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#projects">Projects</a>
-      <a class="nav-link" href="#experience">Experience</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
-    <div class="controls">
-      <button id="langToggle" class="btn" aria-pressed="false">EN ▾</button>
-      <button id="theme
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div class="hero-card reveal">
+          <div class="moon-deco" aria-hidden="true"></div>
+          <div class="eyebrow">Klyra — KlyraLabs.dev</div>
+          <h1>Hi, I’m <span class="gradient-text">Klyra</span></h1>
+
+          <div class="role">
+            <div id="typeText">Dev & IT enthusiast</div>
+            <div class="cursor" aria-hidden="true"></div>
+          </div>
+
+          <p class="hero-sub">
+            I’m <strong>Lucía Gil Gracia</strong> (legal name). I love everything IT — learning cybersecurity, managing web systems, and solving technical issues for real customers. Based in Sitges, Spain. Born 19 April 2003 — 22 years old.
+          </p>
+
+          <div class="hero-buttons">
+            <a class="btn neon" href="#contact">Work with me</a>
+            <a class="btn" href="#projects">See my work</a>
+          </div>
+
+          <div class="hero-info">
+            Languages: Spanish (native) · Catalan (native) · English (EF SET C2). · Email: <a href="mailto:contact@klyralabs.dev">contact@klyralabs.dev</a>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="mini reveal">
+            <div class="mini-header">
+              <div>Current</div>
+              <div class="muted">Since Jul 2025</div>
+            </div>
+            <div class="mini-role">Pharmacy Technician — Sitges (concurrent pharmacy)</div>
+            <div class="muted">
+              Hired after apprenticeship. I manage technical operations: the official website & back office, online orders & issues, SEO, stock reposition, and all technical problems. I also provide customer support in English and Spanish.
+            </div>
+          </div>
+
+          <div class="mini reveal">
+            <div style="font-weight:800">Skills</div>
+            <div class="skills-list">
+              <span class="pill">Customer Service</span>
+              <span class="pill">IT Support</span>
+              <span class="pill">Web Management</span>
+              <span class="pill">SEO</span>
+              <span class="pill">Cybersecurity (learning)</span>
+              <span class="pill">Technical Troubleshooting</span>
+            </div>
+          </div>
+
+          <div class="mini reveal" aria-hidden="true">
+            <div style="font-weight:800">Brand</div>
+            <div class="muted">KlyraLabs.dev — elegant dev + IT support</div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <h3>About</h3>
+        <span class="underline" aria-hidden="true"></span>
+        <div class="muted about-text">
+          I’m <strong>Lucía (Klyra)</strong>, a passionate IT explorer and budding cybersecurity enthusiast. I combine hands-on customer-facing experience with technical responsibilities: maintaining the pharmacy's website and back office, handling orders and SEO, troubleshooting systems, and supporting customers in English, Spanish and Catalan. I enjoy building reliable systems and learning the defensive side of technology.
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <div class="projects-header">
+          <div>
+            <h3>Projects & Highlights</h3>
+            <div class="muted">Small selection — replace these placeholders with your live demos or repos.</div>
+          </div>
+          <div class="muted">Portfolio • KlyraLabs</div>
+        </div>
+
+        <div class="section-grid">
+          <!-- Project cards -->
+          <article class="card project reveal">
+            <h4>Pharmacy Site Admin</h4>
+            <div class="muted">Managed the pharmacy's site, order flow, and back-office integrations. Troubleshot payment & stock issues and improved the order process.</div>
+            <div class="project-footer">
+              <div class="muted">Tech: CMS, basic JS, SEO</div>
+              <div class="project-links">
+                <a class="btn" href="#">Demo</a>
+                <a class="btn" href="#">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <h4>IT Support & Troubleshooting</h4>
+            <div class="muted">Resolved POS, network and device issues at work; documented steps and improved first response times for common faults.</div>
+            <div class="project-footer">
+              <div class="muted">Tech: Windows, POS, Networking</div>
+              <div class="project-links">
+                <a class="btn" href="#">More</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <h4>Cybersecurity Learning Lab</h4>
+            <div class="muted">Personal learning projects focusing on defensive basics and secure configuration. (Ongoing)</div>
+            <div class="project-footer">
+              <div class="muted">Tech: Linux, networking, security fundamentals</div>
+              <div class="project-links">
+                <a class="btn" href="#">Notes</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE, EDUCATION, CONTACT sections go here similarly -->
+    </main>
+  </div>
+
+  <script>
+    // Simple reveal on scroll
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.15});
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
